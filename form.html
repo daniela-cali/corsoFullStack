@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form in HTML</title>
+</head>
+<body>
+    <a href="index.html">Torna alla home</a>
+    <h1>Form in HTML</h1>
+    <p>I form in HTML permettono di raccogliere dati dagli utenti attraverso vari tipi di input. Ecco un esempio di form con diversi campi:</p>
+    <form action = "form.php" method="POST">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" ><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label for="age">Età:</label>
+        <input type="number" id="age" name="age" min="0" max="120"><br><br>
+
+        <label for="dob">Data di nascita:</label>
+        <input type="date" id="dob" name="dob"><br><br>
+        <p> </p>
+        <p>Nei form è molto comune trovare anche input di tipo select per far apparire delle tendine di scelta:</p>
+        <label for="country">Paese:</label>
+        <select id="country" name="country">
+            <option value="it">Italia</option>
+            <option value="us">Stati Uniti</option>
+            <option value="uk">Regno Unito</option>
+            <option value="fr">Francia</option> 
+        </select><br><br>
+                <p>Le select possono essere anche multicheck, ossia permettere l'invio di più valori di uno stesso elenco, si ottiene con l'attributo multiple (per selezionare più opzioni va premuto il tasto CTRL):</p>
+                <p>Per inviare al server una sola variabile contenente i valori scelti dall'utente è necessario usare le parentesi [] sull'attributo name</p>
+        <label for="hobbies">Hobby:</label>
+        <select id="hobbies" name="hobbies[]" multiple>
+            <option value="sport">Sport</option>
+            <option value="lettura">Lettura</option>
+            <option value="arte">Arte</option>
+            <option value="viaggi">Viaggi</option> 
+        </select><br><br>
+        <p>Oppure delle checkbox per selezioni multiple:</p>
+        <label><input type="checkbox" name="interests[]" id="coding" value="coding"> Coding</label>
+        <label><input type="checkbox" name="interests[]" id="music" value="music"> Musica</label>
+        <label><input type="checkbox" name="interests[]" id="sports" value="sports"> Sport</label><br><br>
+        <p>O dei radio button per selezioni singole:<br>
+        I radio button per poter funzionare in modo "esclusivo" DEVONO avere lo stesso name! Altrimenti sarò possibile inviare più valori. L'id, per comodità, può essere uguale al name e serve per manipolazioni attraverso javascript o CSS</p>
+        <label><input type="radio" name="gender" value="male"> Maschio</label>
+        <label><input type="radio" name="gender" value="female"> Femmina</label>
+        <label><input type="radio" name="gender" value="other"> Altro</label><br><br>
+        
+
+
+        <input type="submit" value="Invia con input">
+        <button type="submit">Invia con button</button>
+        <button type="reset">Resetta</button>
+    </form>
+    <p>L'utilizzo dei type permette di definire anche il contenuto dei vari input:
+        <ul>
+            <li>text: campo di testo generico</li>
+            <li>email: campo per indirizzi email con validazione</li>
+            <li>password: campo per password che nasconde i caratteri</li>
+            <li>number: campo per numeri con opzioni di min e max</li>
+            <li>date: campo per selezionare una data</li>
+            <li>submit: bottone per inviare il form</li>
+            <li>reset: bottone per resettare i campi del form</li>
+        </ul>
+        Usarlo permette di effettuare una validazione di base lato client prima dell'invio del form.
+        Inoltre l'attributo required forza l'utente a compilare quel campo prima di poter inviare il form.
+    </p>
+    <p>Il form permette di raccogliere dati dall'utente e inviarli al server alla pagina indicata nell'attributo action (usare # per ricaricare la pagina stessa del form) attraverso il metodo scelto con l'attributo method che può avere valore GET o POST:
+        <ul>
+            <li>GET: i dati vengono inviati come parte dell'URL, visibili nella barra degli indirizzi. Adatto per dati non sensibili e richieste idempotenti.</li>
+            <img src="images/request_GET.PNG" alt="Esempio di URL con dati GET">
+            <li>POST: i dati vengono inviati nel corpo della richiesta HTTP, non visibili nell'URL. Adatto per dati sensibili e operazioni che modificano lo stato del server.</li>
+            <img src="images/request_POST.PNG" alt="Esempio di richiesta POST con dati nel corpo ricevuti dal server PHP (form.php)">
+        </ul>
+    </p>
+    
+</body>
+</html>
